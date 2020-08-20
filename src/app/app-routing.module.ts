@@ -11,7 +11,7 @@ import { NonAuthGuard } from './utils/guards/non-auth.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'main',
     component: MainComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
@@ -31,7 +31,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'login',
+    path: '',
     component: LoginComponent,
     canActivate: [NonAuthGuard],
   },

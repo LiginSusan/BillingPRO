@@ -13,3 +13,17 @@
   width: 0px;
   background: transparent;
 }
+
+.main-bg {
+  background: url(./assets/img/bg2.jpg) no-repeat center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  min-height: 100vh;
+}
+
+.icon {
+  max-width: 20px;
+}
