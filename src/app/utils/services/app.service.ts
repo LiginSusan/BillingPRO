@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 })
 export class AppService {
   public user = {
-    firstName: 'Alexander',
-    lastName: 'Pierce',
+    firstName: 'Melissa',
+    lastName: 'Dade',
     image: 'assets/img/user2-160x160.jpg',
   };
 

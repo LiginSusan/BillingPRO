@@ -23,6 +23,7 @@ import { AppButtonComponent } from './components/app-button/app-button.component
 import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
+import { PurchaseOrderComponent } from './views/purchase-order/purchase-order.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -42,6 +43,7 @@ registerLocaleData(localeEn, 'en-EN');
     NotificationsDropdownMenuComponent,
     AppButtonComponent,
     UserDropdownMenuComponent,
+    PurchaseOrderComponent,
   ],
   imports: [
     BrowserModule,
