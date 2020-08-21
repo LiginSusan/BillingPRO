@@ -9,6 +9,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 import { PurchaseOrderComponent } from './views/purchase-order/purchase-order.component';
+import { BreadCrumbsComponent } from './views/bread-crumbs/bread-crumbs.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'breadcrumb',
+    component: BreadCrumbsComponent,
   },
   { path: '**', redirectTo: '' },
 ];
