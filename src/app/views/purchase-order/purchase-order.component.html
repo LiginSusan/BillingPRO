@@ -1,66 +1,16 @@
 <div class="card">
   <div class="card-body">
     <div class="container-fluid">
-      <div class="card top">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                Row1
-                <div class="col-md-3">
-                  <nav>
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="#">Home</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="#">Library</a>
-                      </li>
-                      <li class="breadcrumb-item active">
-                        Data
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-                <div class="col-md-3">
-                  <nav>
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="#">Home</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="#">Library</a>
-                      </li>
-                      <li class="breadcrumb-item active">
-                        Data
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-                <div class="col-md-3">
-                  <nav>
-                    <ol class="breadcrumb">
-                      <li class="breadcrumb-item">
-                        <a href="#">Home</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <a href="#">Library</a>
-                      </li>
-                      <li class="breadcrumb-item active">
-                        Data
-                      </li>
-                    </ol>
-                  </nav>
-                </div>
-              </div>
-            </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row padding-left-breadcrumb">
+            <app-bread-crumbs></app-bread-crumbs>
           </div>
         </div>
       </div>
-      <div class="card top">
+      <div class="card">
         <div class="card-body">
           <div class="row">
-            row2
             <div class="col-md-12">
               <div class="card">
                 <div class="card-body">
@@ -95,7 +45,30 @@
               <div class="card">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-12"></div>
+                    <div class="col-md-12 padding-left-custom">
+                      <div class="left">
+                        <a
+                          class="previous-next round"
+                          [ngClass]="{
+                            adisabled: index <= 0,
+                            active: index > 0
+                          }"
+                          (click)="previous()"
+                          >&#8249;</a
+                        >
+                      </div>
+                      <div class="right">
+                        <a
+                          class="previous-next round"
+                          [ngClass]="{
+                            adisabled: index >= 3,
+                            active: index >= 0 && index < 3
+                          }"
+                          (click)="next()"
+                          >&#8250;</a
+                        >
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -106,7 +79,6 @@
       <div class="card top">
         <div class="card-body">
           <div class="row">
-            row3
             <div class="col-md-12"></div>
           </div>
         </div>

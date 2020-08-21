@@ -7,6 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PurchaseOrderComponent implements OnInit {
   constructor() {}
+  index: number;
+  routinkLinks: Array<string> = [
+    '/browse',
+    '/compare',
+    '/confirmation',
+    '/checkout',
+  ];
+  ngOnInit(): void {
+    this.index = 0;
+    console.log(this.index);
+  }
 
-  ngOnInit(): void {}
+  previous() {
+    this.index = this.index - 1;
+    console.log('index:' + this.index);
+  }
+
+  next() {
+    this.index = this.index + 1;
+    console.log('index:' + this.index);
+  }
 }
