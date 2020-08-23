@@ -1,0 +1,54 @@
+h2 {
+  text-align: center;
+  padding-top: 20px 0;
+}
+
+.table-bordered {
+  border: 1px solid #ddd !important;
+}
+.th {
+  width: 20%;
+}
+.th-styles {
+  color: #ffffff;
+  background: #1cc7d0;
+}
+
+.tr-iseven {
+  background: #f0f3f56b;
+}
+
+table caption {
+  padding: 0.5em 0;
+}
+
+table tfoot tr td {
+  text-align: center !important;
+}
+
+@media (max-width: 620px) {
+  .tablesaw-stack tbody tr:not(:last-child) {
+    border-bottom: 2px solid #0b0b0d;
+    font-size: smaller;
+  }
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+.form-control {
+  width: 100%;
+}
+
+.searchclear {
+  position: absolute;
+  right: 5px;
+  top: 0;
+  bottom: 0;
+  height: 14px;
+  margin: auto;
+  font-size: 14px;
+  cursor: pointer;
+}

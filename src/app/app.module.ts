@@ -25,6 +25,9 @@ import localeEn from '@angular/common/locales/en';
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
 import { PurchaseOrderComponent } from './views/purchase-order/purchase-order.component';
 import { BreadCrumbsComponent } from './views/bread-crumbs/bread-crumbs.component';
+import { GridViewComponent } from './views/grid-view/grid-view.component';
+import { FormsModule } from '@angular/forms';
+import { DataTableComponent } from './data-table/data-table.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -46,6 +49,8 @@ registerLocaleData(localeEn, 'en-EN');
     UserDropdownMenuComponent,
     PurchaseOrderComponent,
     BreadCrumbsComponent,
+    GridViewComponent,
+    DataTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ registerLocaleData(localeEn, 'en-EN');
       preventDuplicates: true,
     }),
     NgbModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

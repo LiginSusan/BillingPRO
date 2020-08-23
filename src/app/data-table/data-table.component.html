@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <table
+        summary="This table shows how to create responsive tables using Tablesaw's functionality"
+        class="table table-bordered table-hover tablesaw tablesaw-stack"
+        data-tablesaw-mode="stack"
+      >
+        <caption class="text-center">
+          An example of a responsive table based on
+          <a href="https://github.com/filamentgroup/tablesaw" target="_blank">
+            Tablesaw</a
+          >:
+        </caption>
+        <thead>
+          <tr>
+            <th class="th-styles">Action</th>
+            <th class="th-styles">Job Code</th>
+            <th class="th-styles">Item Code</th>
+            <th class="th-styles">Cost Center</th>
+            <th class="th-styles">Unit</th>
+            <th class="th-styles">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let dynamic of dynamicArray; even as isEven; let i = index"
+            [ngClass]="{
+              'tr-iseven': isEven
+            }"
+          >
+            <td class="text-center">
+              <img src="../../assets/img/delete.png" (click)="deleteRow(i)" />
+            </td>
+            <td>
+              <div class="btn-group">
+                <input
+                  [(ngModel)]="dynamic.jobCode"
+                  class="form-control"
+                  type="text"
+                />
+                <i class="fa fa-search searchclear themecolor"></i>
+              </div>
+            </td>
+            <td>
+              <div class="btn-group">
+                <input
+                  [(ngModel)]="dynamic.itemCode"
+                  class="form-control"
+                  type="text"
+                />
+                <i class="fa fa-search searchclear themecolor"></i>
+              </div>
+            </td>
+            <td>
+              <div class="btn-group">
+                <input
+                  [(ngModel)]="dynamic.costcenter"
+                  class="form-control"
+                  type="text"
+                />
+                <i class="fa fa-search searchclear themecolor"></i>
+              </div>
+            </td>
+            <td>
+              <input
+                [(ngModel)]="dynamic.unit"
+                class="form-control"
+                type="text"
+              />
+            </td>
+            <td>
+              <input
+                [(ngModel)]="dynamic.amount"
+                class="form-control"
+                type="text"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot></tfoot>
+      </table>
+      <button (click)="addRow()" class="btn btn-info">scan</button>
+    </div>
+  </div>
+</div>
