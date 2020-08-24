@@ -41,7 +41,9 @@ table tfoot tr td {
 .form-control {
   width: 100%;
 }
-
+.close {
+  color: red;
+}
 .searchclear {
   position: absolute;
   right: 5px;
@@ -51,4 +53,9 @@ table tfoot tr td {
   margin: auto;
   font-size: 14px;
   cursor: pointer;
+}
+
+.modalheadercustombg {
+  background-color: #1cc7d0;
+  color: white;
 }

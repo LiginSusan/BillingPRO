@@ -39,7 +39,10 @@
                   class="form-control"
                   type="text"
                 />
-                <i class="fa fa-search searchclear themecolor"></i>
+                <i
+                  class="fa fa-search searchclear themecolor"
+                  (click)="open(mymodal, dynamic)"
+                ></i>
               </div>
             </td>
             <td>
@@ -49,7 +52,10 @@
                   class="form-control"
                   type="text"
                 />
-                <i class="fa fa-search searchclear themecolor"></i>
+                <i
+                  class="fa fa-search searchclear themecolor"
+                  (click)="open(mymodal, dynamic)"
+                ></i>
               </div>
             </td>
             <td>
@@ -59,7 +65,10 @@
                   class="form-control"
                   type="text"
                 />
-                <i class="fa fa-search searchclear themecolor"></i>
+                <i
+                  class="fa fa-search searchclear themecolor"
+                  (click)="open(mymodal, dynamic)"
+                ></i>
               </div>
             </td>
             <td>
@@ -84,3 +93,106 @@
     </div>
   </div>
 </div>
+
+<ng-template #mymodal let-modal class="modal-lg">
+  <div class="modal-header modalheadercustombg modal-lg">
+    <h4 class="modal-title" id="modal-basic-title">Advanced Search</h4>
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true" class="modalheadercustombg">×</span>
+    </button>
+  </div>
+  <div class="modal-body" *ngIf="!isSearchTriggered">
+    <div class="row">
+      <div class="col-lg-12 mx-auto">
+        <div class="container col-lg-12">
+          <form id="advanced-search-form" role="form">
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_jobcode">Job Code</label>
+                    <input
+                      id="form_jobcode"
+                      type="text"
+                      name="jobcode"
+                      class="form-control"
+                      placeholder="Job Code"
+                      value="{{ selectedRowObject?.jobCode }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_itemcode">Item Code</label>
+                    <input
+                      id="form_itemcode"
+                      type="text"
+                      name="itemcode"
+                      class="form-control"
+                      placeholder="Item Code"
+                      value="{{ selectedRowObject?.itemCode }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_costcenter">Cost Center</label>
+                    <input
+                      id="form_costcenter"
+                      type="text"
+                      name="costcenter"
+                      class="form-control"
+                      placeholder="Cost Center"
+                      value="{{ selectedRowObject?.costcenter }}"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="form_amount">Amount</label>
+                    <input
+                      id="form_amount"
+                      type="text"
+                      name="amount"
+                      class="form-control"
+                      placeholder="Amount"
+                      value="{{ selectedRowObject?.amount }}"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="form_description">Description</label>
+                    <textarea
+                      id="form_description"
+                      name="description"
+                      class="form-control"
+                      placeholder="Write your Description here..."
+                      rows="4"
+                      value="{{ selectedRowObject?.description }}"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button (click)="search()" class="btn btn-info">search</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isSearchTriggered">
+    <app-table-pagination-component></app-table-pagination-component>
+  </div>
+</ng-template>

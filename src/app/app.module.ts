@@ -28,6 +28,12 @@ import { BreadCrumbsComponent } from './views/bread-crumbs/bread-crumbs.componen
 import { GridViewComponent } from './views/grid-view/grid-view.component';
 import { FormsModule } from '@angular/forms';
 import { DataTableComponent } from './data-table/data-table.component';
+import { TablePaginationComponentComponent } from './table-pagination-component/table-pagination-component.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -51,6 +57,7 @@ registerLocaleData(localeEn, 'en-EN');
     BreadCrumbsComponent,
     GridViewComponent,
     DataTableComponent,
+    TablePaginationComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +71,11 @@ registerLocaleData(localeEn, 'en-EN');
     }),
     NgbModule,
     FormsModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,0 +1,45 @@
+<div class="container">
+  <mat-form-field>
+    <input
+      matInput
+      (keyup)="applyFilter($event.target.value)"
+      placeholder="Filter"
+    />
+  </mat-form-field>
+
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="jobCode">
+      <mat-header-cell *matHeaderCellDef> Job Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.jobCode }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="itemCode">
+      <mat-header-cell *matHeaderCellDef> Item Code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.itemCode }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.description }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="costcenter">
+      <mat-header-cell *matHeaderCellDef> Cost Center </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.costcenter }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.amount }} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="submit(row)"
+    ></mat-row>
+  </mat-table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+  ></mat-paginator>
+</div>
