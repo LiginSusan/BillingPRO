@@ -10,6 +10,8 @@ import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 import { PurchaseOrderComponent } from './views/purchase-order/purchase-order.component';
 import { BreadCrumbsComponent } from './views/bread-crumbs/bread-crumbs.component';
+import { OrderDetailsComponent } from './views/order-details/order-details.component';
+import { PersonInfoComponent } from './views/person-info/person-info.component';
 
 const routes: Routes = [
   {
@@ -33,6 +35,16 @@ const routes: Routes = [
       {
         path: 'order',
         component: PurchaseOrderComponent,
+        children: [
+          {
+            path: '',
+            component: OrderDetailsComponent,
+          },
+          {
+            path: 'persondetails',
+            component: PersonInfoComponent,
+          },
+        ],
       },
     ],
   },

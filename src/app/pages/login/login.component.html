@@ -5,9 +5,6 @@
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
       <p class="legend">Login Here</p>
-      <div *ngIf="loginForm.errors" class="alert alert-danger">
-        The username or Password is invalid
-      </div>
       <div class="input">
         <input
           type="email"
@@ -15,12 +12,13 @@
           formControlName="email"
           id="email"
         />
-        <!-- <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-                      <div *ngIf="email.errors.required">Email is required</div>
-                  </div> -->
         <span>
           <img class="icon" src="../../../assets/img/Email-2.ico" alt="" />
         </span>
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+          <div *ngIf="email.errors.required">Email is required</div>
+          <div *ngIf="email.errors.pattern">Incorrect format</div>
+        </div>
       </div>
 
       <div class="input">
@@ -30,12 +28,18 @@
           formControlName="password"
           id="password"
         />
-        <!-- <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-                      <div *ngIf="password.errors.required">Password is required</div>
-                  </div> -->
         <span>
           <img class="icon" src="../../../assets/img/lock.ico" alt="" />
         </span>
+        <div
+          *ngIf="password.touched && password.invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.cannotContainSpace">
+            Space not allowed
+          </div>
+        </div>
       </div>
       <button type="submit" class="btn btn-default btn-theme">
         Login

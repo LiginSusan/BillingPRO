@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { DynamicGrid } from '../models/grid.model';
+import { DataService } from '../service/data.service';
 
 const ELEMENT_DATA: DynamicGrid[] = [
   {
@@ -39,12 +40,13 @@ export class TablePaginationComponentComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {}
 
-  submit(row: DynamicGrid) {
+  selectcontent(row: DynamicGrid) {
     this.selectedResult = row;
-    console.log(this.selectedResult);
+    this.dataService.updatedDataSelection(this.selectedResult);
   }
 
   ngAfterViewInit() {

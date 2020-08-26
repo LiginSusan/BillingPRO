@@ -34,6 +34,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OrderDetailsComponent } from './views/order-details/order-details.component';
+import { PersonInfoComponent } from './views/person-info/person-info.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -58,6 +62,8 @@ registerLocaleData(localeEn, 'en-EN');
     GridViewComponent,
     DataTableComponent,
     TablePaginationComponentComponent,
+    OrderDetailsComponent,
+    PersonInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +82,8 @@ registerLocaleData(localeEn, 'en-EN');
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTabsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

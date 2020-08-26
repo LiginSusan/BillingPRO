@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DynamicGrid } from '../models/grid.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-data-table',
@@ -8,7 +9,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnInit {
-  constructor(private modalService: NgbModal) {}
+  constructor(
+    private modalService: NgbModal,
+    private dataservice: DataService
+  ) {}
 
   dynamicArray: Array<DynamicGrid> = [];
   index = 0;
@@ -23,7 +27,12 @@ export class DataTableComponent implements OnInit {
     costcenter: '',
     amount: '',
   };
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataservice.modifiedData.subscribe((data) => {
+      this.dynamicArray.splice(this.dynamicArray.length - 1, 0, data);
+      this.hidePopup();
+    });
+  }
   addRow() {
     this.newDynamic = {
       jobCode: '',
@@ -71,5 +80,10 @@ export class DataTableComponent implements OnInit {
   search() {
     this.isSearchTriggered = true;
     console.log('submit');
+  }
+
+  hidePopup() {
+    this.isSearchTriggered = false;
+    this.modalService.dismissAll('Canceled Operation');
   }
 }

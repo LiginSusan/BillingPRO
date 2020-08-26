@@ -8,80 +8,54 @@
           </div>
         </div>
       </div>
-      <div class="card">
-        <div class="card-body">
+      <router-outlet></router-outlet>
+
+      <div class="row">
+        <div class="col-md-12">
           <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="card">
-                      <div class="card-body">
-                        <div
-                          class="col-md-6"
-                          style="min-width: 420px; min-height: 10px;"
-                        ></div>
-                      </div>
-                    </div>
-                    <div class="col"></div>
-                    <div class="card">
-                      <div class="card-body">
-                        <div
-                          class="col-md-6"
-                          style="min-width: 420px; min-height: 10px;"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div class="col-md-4 float-md-none"></div>
+            <div class="col-md-4 float-md-none text-center">
+              <div class="left">
+                <a
+                  class="previous-next round"
+                  [ngClass]="{
+                    adisabled: index <= 0,
+                    active: index > 0
+                  }"
+                  (click)="previous()"
+                  >&#8249;</a
+                >
               </div>
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <app-data-table></app-data-table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12 padding-left-custom">
-                      <div class="left">
-                        <a
-                          class="previous-next round"
-                          [ngClass]="{
-                            adisabled: index <= 0,
-                            active: index > 0
-                          }"
-                          (click)="previous()"
-                          >&#8249;</a
-                        >
-                      </div>
-                      <div class="right">
-                        <a
-                          class="previous-next round"
-                          [ngClass]="{
-                            adisabled: index >= 3,
-                            active: index >= 0 && index < 3
-                          }"
-                          (click)="next()"
-                          >&#8250;</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="right">
+                <a
+                  class="previous-next round"
+                  [ngClass]="{
+                    adisabled: index >= 1,
+                    active: index >= 0 && index < 1
+                  }"
+                  (click)="next()"
+                  >&#8250;</a
+                >
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="card top">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-12"></div>
+            <div class="col-md-4">
+              <div class="btn-toolbar float-md-right">
+                <button
+                  type="button"
+                  id="btnSubmit"
+                  class="btn btn-info btn-sm mr-1"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  id="btnCancel"
+                  class="btn btn-info btn-sm"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

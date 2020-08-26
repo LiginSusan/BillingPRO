@@ -35,7 +35,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row
       *matRowDef="let row; columns: displayedColumns"
-      (click)="submit(row)"
+      (click)="selectcontent(row)"
     ></mat-row>
   </mat-table>
   <mat-paginator
