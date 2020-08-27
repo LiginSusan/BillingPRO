@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "http://integraontrack.firstflightme.com/IntegraOntrackService.svc/ReadDataTableHelpQuery",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

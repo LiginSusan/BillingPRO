@@ -2,7 +2,7 @@
   "name": "adminlte",
   "version": "0.1.0",
   "scripts": {
-    "start": "node server.js",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "dev:start": "ng serve",
     "dev:build": "ng build --prod",
     "dev:test": "ng test",

@@ -1,7 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DynamicGrid } from '../models/grid.model';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../service/data.service';
+import { SearchService } from '../service/search.service';
+import { ItemDetails } from '../models/jason.model';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+
+// const ELEMENT_DATA: DynamicGrid[] = [
+//   {
+//     jobCode: 'Jobcode1',
+//     itemCode: 'ItemCode1',
+//     description: 'desc 1',
+//     costcenter: 'CS1',
+//     amount: 'amount1',
+//   },
+//   {
+//     jobCode: 'Jobcode2',
+//     itemCode: 'ItemCode2',
+//     description: 'desc 2',
+//     costcenter: 'CS2',
+//     amount: 'amount2',
+//   },
+// ];
 
 @Component({
   selector: 'app-data-table',
@@ -9,10 +31,18 @@ import { DataService } from '../service/data.service';
   styleUrls: ['./data-table.component.scss'],
 })
 export class DataTableComponent implements OnInit {
+  displayedColumns: string[] = ['index', 'itemCode', 'description', 'rate'];
+  dataSource = new MatTableDataSource<ItemDetails>();
+  selectedResult: ItemDetails;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   constructor(
     private modalService: NgbModal,
-    private dataservice: DataService
+    private dataservice: DataService,
+    private searchService: SearchService
   ) {}
+  itemArray: Array<ItemDetails>;
 
   dynamicArray: Array<DynamicGrid> = [];
   index = 0;
@@ -29,9 +59,28 @@ export class DataTableComponent implements OnInit {
   };
   ngOnInit(): void {
     this.dataservice.modifiedData.subscribe((data) => {
+      console.log('subscribed in main table', data);
       this.dynamicArray.splice(this.dynamicArray.length - 1, 0, data);
       this.hidePopup();
     });
+    this.searchService.modifiedData.subscribe((data) => {
+      console.log('suscribed data ', data);
+      this.dataSource = new MatTableDataSource<ItemDetails>(data);
+      this.isSearchTriggered = false;
+    });
+  }
+  selectcontent(row: ItemDetails) {
+    this.selectedResult = row;
+    this.dataservice.updatedDataSelection(this.selectedResult);
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   addRow() {
     this.newDynamic = {
@@ -59,9 +108,11 @@ export class DataTableComponent implements OnInit {
       .open(content, { size: 'lg', ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
+          this.isSearchTriggered = false;
           this.closeResult = `Closed with: ${result}`;
         },
         (reason) => {
+          this.isSearchTriggered = false;
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
@@ -77,9 +128,16 @@ export class DataTableComponent implements OnInit {
     }
   }
 
-  search() {
+  search(searchKey) {
     this.isSearchTriggered = true;
-    console.log('submit');
+    this.searchService.getsearchDetails(searchKey.value);
+
+    // this.searchService.getsearchDetails(searchKey.value).subscribe(data => {
+    //   this.itemArray= JSON.parse(data.JasonStringData);
+    //   this.dataSource = new MatTableDataSource<ItemDetails>(this.itemArray);
+    //   this.isSearchTriggered = false;
+
+    // });
   }
 
   hidePopup() {
