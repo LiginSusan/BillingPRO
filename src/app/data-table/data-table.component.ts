@@ -4,26 +4,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { DataService } from '../service/data.service';
 import { SearchService } from '../service/search.service';
 import { ItemDetails } from '../models/jason.model';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-
-// const ELEMENT_DATA: DynamicGrid[] = [
-//   {
-//     jobCode: 'Jobcode1',
-//     itemCode: 'ItemCode1',
-//     description: 'desc 1',
-//     costcenter: 'CS1',
-//     amount: 'amount1',
-//   },
-//   {
-//     jobCode: 'Jobcode2',
-//     itemCode: 'ItemCode2',
-//     description: 'desc 2',
-//     costcenter: 'CS2',
-//     amount: 'amount2',
-//   },
-// ];
+import { tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-data-table',
@@ -55,17 +39,23 @@ export class DataTableComponent implements OnInit {
     itemCode: '',
     description: '',
     costcenter: '',
-    amount: '',
+    rate: '',
   };
+  length = 100;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5];
+
   ngOnInit(): void {
     this.dataservice.modifiedData.subscribe((data) => {
-      console.log('subscribed in main table', data);
       this.dynamicArray.splice(this.dynamicArray.length - 1, 0, data);
       this.hidePopup();
     });
     this.searchService.modifiedData.subscribe((data) => {
-      console.log('suscribed data ', data);
+      this.length = data.length;
+      this.pageSize = 5;
+      this.pageSizeOptions=[5];
       this.dataSource = new MatTableDataSource<ItemDetails>(data);
+      this.dataSource.paginator = this.paginator;
       this.isSearchTriggered = false;
     });
   }
@@ -74,11 +64,7 @@ export class DataTableComponent implements OnInit {
     this.dataservice.updatedDataSelection(this.selectedResult);
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
+  
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -88,7 +74,7 @@ export class DataTableComponent implements OnInit {
       itemCode: '',
       description: '',
       costcenter: '',
-      amount: '',
+      rate: '',
     };
     this.dynamicArray.push(this.newDynamic);
     console.log(this.dynamicArray);

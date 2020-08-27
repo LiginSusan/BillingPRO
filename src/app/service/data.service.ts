@@ -12,7 +12,7 @@ export class DataService {
     itemCode: '',
     description: '',
     costcenter: '',
-    amount: '',
+    rate: '',
   };
   constructor() {}
   dataSource = new BehaviorSubject<DynamicGrid>(this.selectedValue);

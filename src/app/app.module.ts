@@ -25,10 +25,8 @@ import localeEn from '@angular/common/locales/en';
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
 import { PurchaseOrderComponent } from './views/purchase-order/purchase-order.component';
 import { BreadCrumbsComponent } from './views/bread-crumbs/bread-crumbs.component';
-import { GridViewComponent } from './views/grid-view/grid-view.component';
 import { FormsModule } from '@angular/forms';
 import { DataTableComponent } from './data-table/data-table.component';
-import { TablePaginationComponentComponent } from './table-pagination-component/table-pagination-component.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -59,9 +57,7 @@ registerLocaleData(localeEn, 'en-EN');
     UserDropdownMenuComponent,
     PurchaseOrderComponent,
     BreadCrumbsComponent,
-    GridViewComponent,
     DataTableComponent,
-    TablePaginationComponentComponent,
     OrderDetailsComponent,
     PersonInfoComponent,
   ],

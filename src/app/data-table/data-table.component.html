@@ -19,7 +19,7 @@
             <th class="th-styles">Item Code</th>
             <th class="th-styles">Cost Center</th>
             <th class="th-styles">Description</th>
-            <th class="th-styles">Amount</th>
+            <th class="th-styles">Rate</th>
           </tr>
         </thead>
         <tbody>
@@ -80,7 +80,7 @@
             </td>
             <td>
               <input
-                [(ngModel)]="dynamic.amount"
+                [(ngModel)]="dynamic.rate"
                 class="form-control custom-font-size"
                 type="text"
               />
@@ -89,7 +89,7 @@
         </tbody>
         <tfoot></tfoot>
       </table>
-      <button (click)="addRow()" class="btn btn-info">scan</button>
+      <button (click)="addRow()" class="btn btn-primary btn-theme">scan</button>
     </div>
   </div>
 </div>
@@ -125,10 +125,9 @@
               </div>
             </div>
           </div>
-          <!-- <button (click)="search()" class="btn btn-info">search</button> -->
           <button
             type="button"
-            class="btn btn-labeled btn-info"
+            class="btn btn-labeled btn-primary btn-theme"
             (click)="search(searchkey)"
           >
             <span class="btn-label">
@@ -176,10 +175,10 @@
           (click)="selectcontent(row)"
         ></mat-row>
       </mat-table>
-      <mat-paginator
-        [pageSizeOptions]="[5]"
-        showFirstLastButtons
-      ></mat-paginator>
+      <mat-paginator #paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions">
+      </mat-paginator>
     </div>
   </div>
 </ng-template>

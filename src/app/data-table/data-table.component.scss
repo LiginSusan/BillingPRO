@@ -11,7 +11,7 @@ h2 {
 }
 .th-styles {
   color: #ffffff;
-  background: #1cc7d0;
+  background: rgb(23 162 184);
 }
 
 .tr-iseven {
@@ -56,7 +56,7 @@ table tfoot tr td {
 }
 
 .modalheadercustombg {
-  background-color: #1cc7d0;
+  background-color:rgb(23 162 184);
   color: white;
 }
 
@@ -77,4 +77,7 @@ table tfoot tr td {
 }
 .btn {
   margin-bottom: 10px;
+}
+button :after {
+  background-color:rgb(23 162 184); 
 }
