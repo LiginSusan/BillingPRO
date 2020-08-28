@@ -41,7 +41,6 @@
                 />
                 <i
                   class="fa fa-search searchclear themecolor"
-                  (click)="open(mymodal, dynamic)"
                 ></i>
               </div>
             </td>
@@ -67,7 +66,6 @@
                 />
                 <i
                   class="fa fa-search searchclear themecolor"
-                  (click)="open(mymodal, dynamic)"
                 ></i>
               </div>
             </td>
@@ -175,10 +173,7 @@
           (click)="selectcontent(row)"
         ></mat-row>
       </mat-table>
-      <mat-paginator #paginator [length]="length"
-               [pageSize]="pageSize"
-               [pageSizeOptions]="pageSizeOptions">
-      </mat-paginator>
+      
     </div>
   </div>
 </ng-template>

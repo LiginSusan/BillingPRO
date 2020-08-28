@@ -55,7 +55,6 @@ export class DataTableComponent implements OnInit {
       this.pageSize = 5;
       this.pageSizeOptions=[5];
       this.dataSource = new MatTableDataSource<ItemDetails>(data);
-      this.dataSource.paginator = this.paginator;
       this.isSearchTriggered = false;
     });
   }
@@ -117,17 +116,11 @@ export class DataTableComponent implements OnInit {
   search(searchKey) {
     this.isSearchTriggered = true;
     this.searchService.getsearchDetails(searchKey.value);
-
-    // this.searchService.getsearchDetails(searchKey.value).subscribe(data => {
-    //   this.itemArray= JSON.parse(data.JasonStringData);
-    //   this.dataSource = new MatTableDataSource<ItemDetails>(this.itemArray);
-    //   this.isSearchTriggered = false;
-
-    // });
   }
 
   hidePopup() {
     this.isSearchTriggered = false;
+    this.dataSource = new MatTableDataSource<ItemDetails>();
     this.modalService.dismissAll('Canceled Operation');
   }
 }
