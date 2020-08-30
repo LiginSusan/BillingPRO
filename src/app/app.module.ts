@@ -12,13 +12,12 @@ import { BlankComponent } from './views/blank/blank.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './views/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegisterComponent } from './pages/register/register.component';
+
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MessagesDropdownMenuComponent } from './pages/main/header/messages-dropdown-menu/messages-dropdown-menu.component';
 import { NotificationsDropdownMenuComponent } from './pages/main/header/notifications-dropdown-menu/notifications-dropdown-menu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppButtonComponent } from './components/app-button/app-button.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
@@ -49,11 +48,9 @@ registerLocaleData(localeEn, 'en-EN');
     MenuSidebarComponent,
     BlankComponent,
     ProfileComponent,
-    RegisterComponent,
     DashboardComponent,
     MessagesDropdownMenuComponent,
     NotificationsDropdownMenuComponent,
-    AppButtonComponent,
     UserDropdownMenuComponent,
     PurchaseOrderComponent,
     BreadCrumbsComponent,
