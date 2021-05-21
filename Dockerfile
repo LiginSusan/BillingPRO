@@ -1,15 +1,11 @@
-# Base image
-FROM node:10
-
-# Maintainer name
-LABEL maintainer="rearView.io"
-
-# Copying angular folder from local directory to Educative directory
-COPY BillingPro /usr/local/educative/angular
-
-# Installing Angular cli and node modules in angular directory
-RUN     npm install -g @angular/cli &&\
-        cd /usr/local/educative/angular &&\
-        npm i
-
-EXPOSE 3000
+### STAGE 1: Build ###
+FROM node:12.7-alpine AS build
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+### STAGE 2: Run ###
+FROM nginx:1.17.1-alpine
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /usr/src/app/dist/adminlte /usr/share/nginx/html
