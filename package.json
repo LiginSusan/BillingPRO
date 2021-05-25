@@ -4,10 +4,11 @@
   "scripts": {
     "start": "ng serve --proxy-config proxy.conf.json",
     "dev:start": "ng serve",
-    "dev:build": "ng build --prod",
+    "dev:build": "ng build --prod && npm run build",
     "dev:test": "ng test",
     "dev:lint": "ng lint",
-    "dev:e2e": "ng e2e"
+    "dev:e2e": "ng e2e",
+	"build":"ng build --prod"
   },
   "private": true,
   "dependencies": {
